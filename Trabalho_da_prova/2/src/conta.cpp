@@ -1,7 +1,7 @@
 #include <iostream>
 #include "conta.hpp"
 #include <string>
-#include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -11,6 +11,11 @@ ContaCorrente::ContaCorrente()
 
 }
 
+ContaCorrente::ContaCorrente(string nome,int CPF,float saldo){
+    this->nome = nome;
+    this->CPF = CPF;
+    this->saldo = saldo;
+}
 
 //getters
 string ContaCorrente::getNome()
@@ -42,7 +47,7 @@ void ContaCorrente::setSaldo(float saldo)
 
 //metodos
 float ContaCorrente::calcularMediaConta(ContaCorrente x[]){
-    float saldototal;
+    float saldototal = 0;
     for (int i = 0; i < 5; i++)
     {
         saldototal+=x[i].getSaldo();
@@ -55,20 +60,17 @@ void ContaCorrente::ImprimirPessoaComMenosSaldo(ContaCorrente x[]){
     int aux;
     for (int i = 0; i < 5; i++)
     {
-        if (x[i].getSaldo() < x[i+1].getSaldo())
+        if (x[i].getSaldo() < x[aux].getSaldo())
         {
             
             aux=i;
-        }else{
-           
-            aux=i+1;
         }
     }
     
-    cout<<"Pessoa com menor saldo:";
-    cout<<"Nome: "<<x[aux].getNome();
-    cout<<"CPF: "<<x[aux].getCPF();
-    cout<<"Saldo: "<<x[aux].getSaldo();
+    cout<<"\nPessoa com menor saldo:";
+    cout<<"\nNome: "<<x[aux].getNome();
+    cout<<"\nCPF: "<<x[aux].getCPF();
+    cout<<"\nSaldo: "<<x[aux].getSaldo();
 }
 
 void ContaCorrente::ImprimirPessoaComMaiorSaldo(ContaCorrente x[]){
@@ -76,18 +78,21 @@ void ContaCorrente::ImprimirPessoaComMaiorSaldo(ContaCorrente x[]){
     int aux;
     for (int i = 0; i < 5; i++)
     {
-        if (x[i].getSaldo() > x[i+1].getSaldo())
+        if (x[i].getSaldo() > x[aux].getSaldo())
         {
            
             aux=i;
-        }else{
-            
-            aux=i+1;
         }
     }
     
-    cout<<"Pessoa com maior saldo:";
-    cout<<"Nome: "<< x[aux].getNome();
-    cout<<"CPF: "<< x[aux].getCPF();
-    cout<<"Saldo: "<< x[aux].getSaldo();
+    cout<<"\nPessoa com maior saldo:";
+    cout<<"\nNome: "<< x[aux].getNome();
+    cout<<"\nCPF: "<< x[aux].getCPF();
+    cout<<"\nSaldo: "<< x[aux].getSaldo();
+    ofstream file("maior.txt");
+    file<<"\nPessoa com maior saldo:";
+    file<<"\nNome: "<< x[aux].getNome();
+    file<<"\nCPF: "<< x[aux].getCPF();
+    file<<"\nSaldo: "<< x[aux].getSaldo();
+
 }
