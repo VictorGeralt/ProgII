@@ -1,0 +1,4 @@
+Estruturada: Maior facilidade de controle, mais facil, puramente imperativa, organizados em funçoes que 
+podem ser chamadas a qualquer momento.
+Orientada: Estruturação em modulos que agrupam por atributos, encapsulamento, uso comercial.
+Funcional:Abstrata, grande fundamentação teorica, ausencia de estados e tudo é função.
